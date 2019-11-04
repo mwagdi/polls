@@ -1,3 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-export default () => <h1>Hello</h1>;
+import { fetchQuestions } from "store/actions";
+
+const App = ({ fetchQuestions }) => {
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
+  return <h1>Hello</h1>;
+};
+
+const mapStateToProps = state => {
+  return {
+    questions: state.questions
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchQuestions }
+)(App);

@@ -11,7 +11,7 @@ const listQuestions = questions => ({
 export const fetchQuestions = () => {
   return dispatch => {
     axios
-      .get("/api")
+      .get(`${API_URL}`)
       .then(({ data }) => dispatch(listQuestions(data)))
       .catch(err => console.log("ERROR: ", err));
   };

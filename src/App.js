@@ -1,22 +1,15 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { fetchQuestions } from "store/actions";
+import { Header } from "components";
+import { Home, Question } from "routes";
 
-const App = ({ fetchQuestions }) => {
-  useEffect(() => {
-    fetchQuestions();
-  }, []);
-  return <h1>Hello</h1>;
-};
-
-const mapStateToProps = state => {
-  return {
-    questions: state.questions
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { fetchQuestions }
-)(App);
+export default () => (
+  <BrowserRouter>
+    <Header />
+    <Switch>
+      <Route path="/:id" component={Question} />
+      <Route path="/" component={Home} />
+    </Switch>
+  </BrowserRouter>
+);

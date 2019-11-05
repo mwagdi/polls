@@ -11,7 +11,7 @@ const showDetails = question => ({
 export const fetchDetails = url => {
   return dispatch => {
     axios
-      .get(`${API_URL}/${url}`)
+      .get(`${API_URL}${url}`)
       .then(({ data }) => dispatch(showDetails(data)))
       .catch(err => console.log("ERROR: ", err));
   };
@@ -26,7 +26,7 @@ const vote = (index, choice) => ({
 export const sendVote = (index, url) => {
   return dispatch => {
     axios
-      .post(`${API_URL}/${url}`)
+      .post(`${API_URL}${url}`)
       .then(({ data }) => dispatch(vote(index, data)))
       .catch(err => console.log("ERROR: ", err));
   };

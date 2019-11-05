@@ -1,7 +1,6 @@
 const rp = require("request-promise");
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require("path");
 
 const app = express();
 
@@ -35,7 +34,6 @@ router.get("/questions/:id?", (req, res) => {
     });
 });
 router.post("/questions", (req, res) => {
-  console.log(req.body);
   const requestOptions = {
     method: "POST",
     uri: "https://polls.apiblueprint.org/questions",

@@ -6,5 +6,8 @@ export default () => (
     <NavLink className="link" activeClassName="link--active" to="/">
       Questions
     </NavLink>
+    <NavLink className="link" activeClassName="link--active" to="/create">
+      Create Question
+    </NavLink>
   </header>
 );

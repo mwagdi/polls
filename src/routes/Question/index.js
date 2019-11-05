@@ -1,24 +1,32 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { connect } from "react-redux";
 
-import { API_URL } from "utils";
+import { fetchDetails } from "store/actions";
+import { ChoiceListContainer } from "containers";
 
-class Question extends Component {
-  state = {};
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    axios
-      .get(`${API_URL}/${id}`)
-      .then(response => this.setState({ ...response.data }));
-  }
-  render() {
-    const { question, choices } = this.state;
-    return (
-      <div className="main">
-        <h1 className="main__title">{question || "Loading..."}</h1>
-      </div>
-    );
-  }
-}
+const Question = ({ question, choices, fetchDetails }) => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    fetchDetails(pathname);
+  }, [pathname, fetchDetails]);
+  return (
+    <div className="main">
+      <h1 className="main__title">{question}</h1>
+      <ChoiceListContainer choices={choices} />
+    </div>
+  );
+};
 
-export default Question;
+const mapStateToProps = state => {
+  const { question, choices } = state.details;
+  return {
+    question,
+    choices
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchDetails }
+)(Question);

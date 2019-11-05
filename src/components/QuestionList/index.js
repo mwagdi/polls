@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 
 const QuestionListItem = ({ question }) => (
   <div className="questionlist__item">
-    <Link to={question.url.replace("/questions/", "")}>
-      {question.question}
-    </Link>
+    <Link to={question.url}>{question.question}</Link>
   </div>
 );
 

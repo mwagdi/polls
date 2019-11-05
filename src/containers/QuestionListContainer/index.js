@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { fetchQuestions } from "store/actions";
-import QuestionList from "components/QuestionList";
+import { QuestionList } from "components";
 
 const QuestionListContainer = ({ fetchQuestions, questions }) => {
   useEffect(() => {
     fetchQuestions();
-  }, []);
+  }, [fetchQuestions]);
 
   return <QuestionList questions={questions} />;
 };

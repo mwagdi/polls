@@ -8,7 +8,7 @@ export default () => (
   <BrowserRouter>
     <Header />
     <Switch>
-      <Route path="/:id" component={Question} />
+      <Route path="/questions/:id" component={Question} />
       <Route path="/" component={Home} />
     </Switch>
   </BrowserRouter>
